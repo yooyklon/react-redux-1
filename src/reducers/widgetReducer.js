@@ -6,7 +6,7 @@ const initialState = {
     price: '',
     id: ''
   },
-  list: []
+  list: [],
 };
 
 export default function widgetReducer(state = initialState, action) {

@@ -36,14 +36,14 @@ code {
     monospace;
 }
 
-.workout {
+.widget {
   width: 550px;
   padding: 30px;
   background-color: #c6c6ff;
   border-radius: 8px;
 }
 
-.form {
+.widget-form {
   margin-bottom: 30px;
   display: flex;
   justify-content: space-between;
@@ -52,16 +52,17 @@ code {
 }
 
 .input-box {
+  position: relative;
   width: 200px;
 }
 
-.form-label {
+.widget-form-label {
   margin-bottom: 10px;
   display: block;
   font-weight: 500;
 }
 
-.form-input {
+.widget-form-input {
   width: 100%;
   padding: 15px;
   font-size: 16px;
@@ -69,7 +70,7 @@ code {
   border-radius: 8px;
 }
 
-.button {
+.widget-button {
   padding: 17px;
   color: #5e5e5e;
   background-color: #ffffff;
@@ -78,46 +79,42 @@ code {
   cursor: pointer;
 }
 
-.input-error {
-  width: 100%;
-  font-weight: 500;
-  color: #ff0000;
-}
-
-.workout-header {
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: space-around;
-  font-weight: 500;
-}
-
 .workout-list {
   padding: 20px;
   background-color: #ffffff;
   border-radius: 8px;
 }
 
-.workout-list-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.widget-list-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   margin-bottom: 10px;
   padding: 10px;
   background-color: #f1f1f1;
   border-radius: 8px;
 }
 
-.workout-list-item-actions {
+.widget-list-item-price {
+  text-align: center;
+}
+
+.widget-list-item-actions {
   display: flex;
+  justify-content: flex-end;
   align-items: center;
 }
 
-.workout-list-item-delete {
+.widget-list-item-delete {
   cursor: pointer;
 }
 
-.workout-list-item-edit {
+.widget-list-item-edit {
   margin-right: 10px;
   font-size: 16px;
   cursor: pointer;
+}
+
+.error {
+  position: absolute;
+  color: red;
 }

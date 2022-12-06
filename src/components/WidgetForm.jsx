@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 
@@ -13,6 +13,8 @@ export default function WidgetForm() {
 
   const dispatch = useDispatch();
 
+  const errorRef = useRef();
+
   function inputChange(event) {
     dispatch(changeForm(event.target.name, event.target.value));
   }
@@ -20,38 +22,48 @@ export default function WidgetForm() {
   function handleSubmit(event) {
     event.preventDefault();
 
+    if (!Number(price)) {
+      errorRef.current.textContent = "Цена должна быть числом";
+      return;
+    } else {
+      errorRef.current.textContent = "";
+    }
+
     dispatch(addItem(service, price));
   }
 
   return (
-    <form className="form" onSubmit={handleSubmit}>
+    <form className="widget-form" onSubmit={handleSubmit}>
       <div className="input-box">
-        <label className="form-label" htmlFor="service">
+        <label className="widget-form-label" htmlFor="service">
           Услуга
         </label>
         <input
-          className="form-input"
+          className="widget-form-input"
           id="service"
           type="text"
           name="service"
           value={service}
           onChange={inputChange}
+          placeholder="Введите услугу..."
         />
       </div>
       <div className="input-box">
-        <label className="form-label" htmlFor="price">
+        <label className="widget-form-label" htmlFor="price">
           Цена
         </label>
         <input
-          className="form-input"
+          className="widget-form-input"
           id="price"
           type="text"
           name="price"
           value={price}
           onChange={inputChange}
+          placeholder="Введите цену..."
         />
+        <div ref={errorRef} className="error"></div>
       </div>
-      <button className="button">OK</button>
+      <button className="widget-button">OK</button>
     </form>
   );
 }
